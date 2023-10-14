@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { CustomizerColor } from '../Utils/MODEL';
+import { FcSettings } from "react-icons/fc";
 
 
 function Customizer(props: any) {
     const [isOpen, setIsOpen] = useState(false);
+    const [color, setColor] = useState(CustomizerColor)
     const toggleCustomizer = (e: any) => {
         e.preventDefault();
         if (isOpen) {
             setIsOpen(false);
+            
         } else {
             setIsOpen(true);
         }
@@ -20,9 +24,15 @@ function Customizer(props: any) {
             zIndex: "100"
         }}>
 
-            <button className="settings-btn" onClick={toggleCustomizer} style={{ alignItems: "center", alignSelf: "center" }}>
-                <span className="settings-icon"></span>
-            </button>
+            {/* <button className="settings-btn" onClick={toggleCustomizer} style={{ alignItems: "center", alignSelf: "center" }}>
+                <span className="settings-icon"><FcSettings size={30} color="white"/></span>
+            </button> */}
+            <div className="icon">
+                <button className={`rotate-icon`} onClick={toggleCustomizer}>
+                    <FcSettings size={30} color="white" />
+                </button>
+            </div>
+
 
             <div style={{ display: "flex", padding: ".8em", }}>
 
@@ -38,10 +48,25 @@ function Customizer(props: any) {
                                     gridColumnGap: "15px"
                                 }}
                             >
+                                {
+                                    color.map((item) => {
+                                        return (
+                                            <>
+                                                <div style={{
+                                                    background: item.color,
+                                                    height: "20px",
+                                                    width: "20px",
+                                                }}
+                                                    onClick={() => handleColorChange(item.color)}
+                                                ></div>
+
+                                            </>
+                                        )
+                                    })
+                                }
 
 
-
-                                <div
+                                {/* <div
 
                                     style={{
                                         background: "#FF0000",
@@ -141,7 +166,7 @@ function Customizer(props: any) {
                                     }
                                 ></div>
 
-
+ */}
 
                             </div>
                         </div>

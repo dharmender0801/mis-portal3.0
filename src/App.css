@@ -12,15 +12,36 @@ nav {
   top: 0;
   z-index: 10;
 }
+.rotate-icon {
+  cursor: pointer;
+  background: none;
+  border: none;
+  animation: rotate 2s infinite linear;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
 
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.icon {
+  height: 2.5vw;
+  width: 8vw;
+  background: rgb(138, 80, 161);
+  border-radius: 5px;
+  position: relative;
+  right: 20px;
+}
 
 .second-nav {
   padding: 1px 1em;
   height: 3.2em;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 }
-
-
 
 .color-options {
   background-color: white;
@@ -58,7 +79,6 @@ nav input {
   /* color: red; */
 }
 
-
 .settings-btn {
   background: none;
   border: none;
@@ -79,7 +99,7 @@ nav input {
 
 .settings-icon::before,
 .settings-icon::after {
-  content: '';
+  content: "";
   position: absolute;
   background-color: white;
 }
@@ -117,7 +137,7 @@ nav input {
   width: 100%;
 }
 
-.center>* {
+.center > * {
   margin: 0 2em;
   /* Adjust the margin value to increase or decrease the space */
 }
@@ -128,23 +148,21 @@ nav input {
   font-weight: 600;
 }
 
-.navMen>* {
+.navMen > * {
   margin: 0 1em;
-
 }
 
-.check>* {
-  margin: .2em 0;
+.check > * {
+  margin: 0.2em 0;
 }
 
 .navMen span {
   cursor: pointer;
 }
 
-.color-options>* {
+.color-options > * {
   margin: 0 5px;
 }
-
 
 .country-wrapper {
   position: relative;
@@ -156,8 +174,6 @@ nav input {
   left: 0;
   display: flex;
   flex-direction: row;
-
-
 }
 
 .check {
@@ -186,10 +202,7 @@ nav input {
   background-color: rgb(130, 132, 133);
 }
 
-
-
 .check span {
-
   width: 100%;
   height: 1.7em;
 }
@@ -202,11 +215,9 @@ nav input {
   flex-direction: column;
   text-align: center;
   align-items: center;
-
 }
 
 .Dashboard h3 {
-
   /* align-items: flex-start; */
   text-align: start;
   width: 95%;
@@ -232,15 +243,12 @@ nav input {
 }
 
 .inCont .topNav select {
-  padding: .5em 3em;
+  padding: 0.5em 3em;
   display: flex;
   border-radius: 5px;
   align-self: flex-start;
   outline: none;
-
-
 }
-
 
 .inCont select option {
   padding: 1em 2em;
@@ -249,11 +257,10 @@ nav input {
 .topNav {
   display: flex;
   width: 100%;
-
 }
 
 .DATE input {
-  padding: .5em 3em;
+  padding: 0.5em 3em;
   outline: none;
   border: 1.5px solid #55acee;
   border-radius: 5px;
@@ -269,11 +276,10 @@ nav input {
 }
 
 .DATE button {
-  padding: .5em 3em;
+  padding: 0.5em 3em;
   background: transparent;
   border: 1.5px solid #55acee;
   border-radius: 3px;
-
 }
 
 .DATE button:hover {
@@ -283,13 +289,12 @@ nav input {
   cursor: pointer;
 }
 
-
-.DATE>* {
+.DATE > * {
   margin: 0 1em;
 }
 
 .DATE label {
-  padding: .2em 1em;
+  padding: 0.2em 1em;
   border-radius: 5px;
   cursor: pointer;
   color: green;
@@ -303,18 +308,17 @@ nav input {
   height: 28vw;
   overflow: scroll !important;
   margin-top: 20px;
-
 }
-.bg-primary{
+.bg-primary {
   color: white;
   /* background: rgb(57, 107, 119); */
   text-align: center;
 }
-.table-container  table{
+.table-container table {
   width: 100%;
   overflow: scroll;
 }
-tbody tr:hover{
+tbody tr:hover {
   background-color: blue;
   /* color: white; */
 }
@@ -324,72 +328,67 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
   background-color: white;
 }
-.filter{
+.filter {
   width: 76.5%;
   position: relative;
   bottom: 25px;
   display: flex;
   justify-content: flex-end;
   z-index: 10;
-
 }
 
-.advertizer{
+.advertizer {
   display: flex;
   flex-direction: column;
   /* background-color: red; */
   /* width: 80%; */
   /* height: 100%; */
   position: relative;
-  top:  80px;
-  justify-content: center;  
-
+  top: 80px;
+  justify-content: center;
 }
-.advertizer .bg-primary tr td{
+.advertizer .bg-primary tr td {
   text-align: center;
-  padding: .8em !important;
+  padding: 0.8em !important;
 }
 
-.advertizer td input{
+.advertizer td input {
   width: auto;
   border-radius: 2px;
   border: none;
-  outline: #55acee .5px solid;
- 
+  outline: #55acee 0.5px solid;
 }
-.advertizer table{
+.advertizer table {
   width: 70% !important;
 }
-.advertizer button{
+.advertizer button {
   height: 2.5em;
   width: 5em;
- 
+
   border: none;
   border-radius: 5px;
   margin-left: 20px !important;
   color: white;
 
- align-self: center;
+  align-self: center;
 }
 
-.advertizer button:nth-child(odd)
-{
+.advertizer button:nth-child(odd) {
   background-color: green;
 }
-.advertizer button:nth-child(even)
-{
+.advertizer button:nth-child(even) {
   background-color: red;
 }
-.btn_submit{
+.btn_submit {
   padding: 3em;
   display: flex;
   align-self: center;
   /* justify-content: space-between !important; */
 }
-.bg-primary{
+.bg-primary {
   width: 100%;
 }
-table{
+table {
   width: 100%;
 }
 .after-adding {
@@ -406,9 +405,8 @@ table{
   flex-direction: column;
   padding: 20px;
 }
-.after-adding label{
-  
-  color:green;
+.after-adding label {
+  color: green;
   font-weight: 700;
 }
 
