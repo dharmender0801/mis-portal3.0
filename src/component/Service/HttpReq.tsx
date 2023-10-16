@@ -9,7 +9,7 @@ const PostReq = (url:string, body:any) => {
 }
 const PutReq = (url:string, body:string) =>
 {
-    return axios.post(url, body);
+    return axios.put(url, body);
 }
 const HttpReq = {
     GetReq,

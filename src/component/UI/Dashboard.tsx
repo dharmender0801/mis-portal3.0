@@ -13,6 +13,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Livecallback from "../Services/LiveCallback";
 import Mis, { MisRef } from "../Services/Mis";
+import AddVendor from "../Services/AddVendor";
+import Suppress from "../Services/Suppress";
 
 
 
@@ -154,23 +156,14 @@ const Dashboard = (props: any) => {
 
         })
     }
-    const copy = async () => {
-        await navigator.clipboard.writeText(lpurl);
-        console.log("check ")
-        toast.success("Copied", {
-            position: 'top-right',
-            autoClose: 5000, // Duration the notification should be shown (in milliseconds)
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
+
 
     return (
         <div className="Dashboard">
-            <h3 style={{ color: "white" }}>{props.service}</h3>
+            <div className="service-name">
+                <h3 style={{ color: "white" }}>{props.service}</h3>
+                <h3 style={{ color: "white" }}>Voicechat</h3>
+            </div>
             <div className="inCont">
                 <div className="topNav">
                     <select name="" id="" style={{ border: "1.5px solid #55acee" }} className="gradientOutline" onChange={getOption}>
@@ -201,7 +194,7 @@ const Dashboard = (props: any) => {
                                     }
                                 </select>
                                 {
-                                    tobeShow === 'Advertizer' && vendorComp === 'Update Vendor' ? (<>
+                                    tobeShow === 'Advertizer' && vendorComp === 'Update Vendor' || vendorComp === 'Supress Logic' ? (<>
 
                                         <select
 
@@ -257,7 +250,10 @@ const Dashboard = (props: any) => {
 
                                     <button type="submit" onClick={fetch1} >fetch</button>
                                     <label onClick={download}><SiMicrosoftexcel size={24} /></label>
-                                </>) : null
+                                </>) :
+                                    tobeShow === 'Advertizer' && vendorComp === 'Callback' ? (<>
+                                        <button type="submit" onClick={fetch1} >fetch</button></>) :
+                                        null
 
                                 }
                             </div>
@@ -272,6 +268,7 @@ const Dashboard = (props: any) => {
                                 border: "1.5px solid #55acee",
                                 position: "relative",
                                 right: "80px",
+                                width: "100vw",
                                 paddingLeft: "20px"
 
 
@@ -287,94 +284,13 @@ const Dashboard = (props: any) => {
                     </>) : tobeShow === 'Advertizer' && vendorComp === 'Vendor Details' ? (<>
                         <Callback navColor={props.navColor} service={props.service} /></>
                     ) : tobeShow === 'Advertizer' && vendorComp === 'Add Vendor' ? (
-                        <>
-                            <div className="advertizer">
-                                <p>Note : for any replacement use <b>&#123;clickid&#125;</b></p>
-
-                                <table >
-                                    <thead className="bg-primary">
-                                        <tr style={{ background: props.navColor }}>
-                                            {
-                                                vandor.map((item) => {
-                                                    return (
-                                                        item.column.map((val) => {
-                                                            return (
-                                                                <>
-                                                                    <td style={{ padding: "6px 20px" }}>{val?.name}</td>
-                                                                </>
-                                                            )
-                                                        })
-                                                    )
-                                                }
-                                                )
-                                            }
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            {
-                                                vandor.map((item) => {
-                                                    return (
-                                                        item.inputValue.map((val) => {
-                                                            return (
-
-                                                                <td >
-                                                                    {
-                                                                        val.name === "cut" || val.name === "counter" || val.name === "callbackLimit" || val.name === "dailyCapping" ? (
-                                                                            <>
-                                                                                <input onChange={handleChange} style={{ padding: ".8em" }} type="number" name={val?.name} id="" />
-                                                                            </>
-                                                                        ) :
-                                                                            val.name === "postbackUrl" ?
-                                                                                (
-                                                                                    <input type="text" onChange={handleChange} style={{ width: "20vw", padding: ".8em" }} name="callback_url" id="" />
-                                                                                ) : <input type="text" onChange={handleChange} style={{ padding: ".8em" }} name={val?.name} id="" />
-
-                                                                    }
-                                                                </td>
-
-                                                            )
-                                                        })
-                                                    )
-                                                }
-                                                )
-                                            }
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-
-                                <div className="btn_submit"><button onClick={handleSubmit}>Submit  </button>
-                                    <button type="reset">Reset  </button>
-                                </div>
-
-                                {
-                                    added ?
-                                        (
-                                            <div className="after-adding">
-                                                <label>Promotion URL</label>
-                                                <p
-                                                    onClick={copy}
-                                                    style={{
-                                                        width: "50vw", padding: ".8em", alignSelf: "center", border: 'none',
-                                                        outline: '#55acee .5px solid', textAlign: "center", cursor: "pointer"
-                                                        , borderRadius: "5px"
-                                                    }}
-                                                >{lpurl}</p>
-                                                <button style={{ background: "#808080" }} onClick={closeDiv}>Close</button>
-                                            </div>
-                                        ) : null
-                                }
-                            </div>
-
-
-                        </>
+                        <><AddVendor navColor={props.navColor} service={props.service} /></>
                     ) : tobeShow === 'Advertizer' && vendorComp === 'Callback' ? (
                         <><Livecallback navColor={props.navColor} livedate={startDate} service={props.service} startDate={fromDate} enddate={toDate} /> </>
                     ) : tobeShow === 'Advertizer' && vendorComp === 'Supress Logic' ? (
-                        <><h1>To be done suppress</h1></>
-                    ) : tobeShow === 'Advertizer' && vendorComp === 'Update Vendor' ? (
-                        <><UpdateVendor service={props.service} vendName={vendName} vendor={columndata2} column={vendorColumn} /></>
+                        <><Suppress navColor={props.navColor} service={props.service} vendorName={vendName} /></>
+                    ) : tobeShow === 'Advertizer' && vendorComp === 'Update Logic' ? (
+                        <><UpdateVendor navColor={props.navColor} service={props.service} vendName={vendName} vendor={columndata2} column={vendorColumn} /></>
                     ) : null
                 }
 

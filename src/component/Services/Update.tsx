@@ -90,7 +90,7 @@ const UpdateVendor = (props: any) => {
                         <table>
                             <div className="table">
                                 <thead className="bg-primary" >
-                                    <tr>
+                                    <tr style={{ background: props.navColor }}>
                                         {column.map((item) => (
 
                                             <>
@@ -146,7 +146,7 @@ const UpdateVendor = (props: any) => {
                                                                 value={val.count}
                                                                 onChange={(e) => handleInputChange(e, rowIndex, columnIndex)}
                                                             />
-                                                        ) : null}
+                                                        ) : <input  style={{ textAlign: "center", height: "30px" }} type="text" />}
                                                     </td>
                                                 ))}
                                         </tr>

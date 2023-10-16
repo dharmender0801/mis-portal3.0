@@ -3,6 +3,7 @@ import { FaFilter } from "react-icons/fa";
 import { MODEL } from "../Utils/MODEL";
 import HttpReq from "../Service/HttpReq";
 import { BASE_URL } from "../Utils/Constant";
+import { toast } from "react-toastify";
 interface MisProps {
     navColor: string; // Assuming it is a string, replace with the appropriate type
     livedate: string;
@@ -66,6 +67,17 @@ const Mis: React.ForwardRefRenderFunction<MisRef, MisProps> = (props: any, ref: 
     const getTotal = (e: any) => {
         HttpReq.PostReq(`${BASE_URL}/${props.service}/voicechat/live`, e).then((response) => {
             setColumnData(response.data.datas);
+        }).catch((error) => {
+            // console.log(error);
+            // toast.error('Coming soon', {
+            //     position: 'top-right',
+            //     autoClose: 5000,
+            //     hideProgressBar: false,
+            //     closeOnClick: true,
+            //     pauseOnHover: true,
+            //     draggable: true,
+            //     progress: undefined,
+            // });
         });
     }
 
@@ -87,6 +99,17 @@ const Mis: React.ForwardRefRenderFunction<MisRef, MisProps> = (props: any, ref: 
         HttpReq.PostReq(`${BASE_URL}/${props.service}/voicechat/mis`, e).then((response) => {
             setColumn(response.data.columns);
             setColumnData1(response.data.datas);
+        }).catch((error) => {
+            // console.log(error);
+            // toast.error('Coming soon', {
+            //     position: 'top-right',
+            //     autoClose: 5000,
+            //     hideProgressBar: false,
+            //     closeOnClick: true,
+            //     pauseOnHover: true,
+            //     draggable: true,
+            //     progress: undefined,
+            // });
         });
     }
 

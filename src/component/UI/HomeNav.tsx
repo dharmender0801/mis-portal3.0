@@ -98,9 +98,11 @@ const HomeNav = (props: any) => {
                                             {country.operator.map((opdata) => {
                                                 return (
                                                     <>
-                                                        <Link to={`${opdata.name}`} style={{ textDecoration: 'none', color: "black" }}>
-                                                            <span onClick={() => handleClick(opdata.operatordata)}><span onClick={() => sendName(opdata?.name)}>{opdata?.name}</span> </span>
-                                                        </Link>
+                                                        <div className="w-100">
+                                                            <Link to={`${opdata.name}`} style={{ textDecoration: 'none', color: "black" }}>
+                                                                <span onClick={() => handleClick(opdata.operatordata)}><span onClick={() => sendName(opdata?.name)}>{opdata?.name}</span> </span>
+                                                            </Link>
+                                                        </div>
                                                     </>
                                                 )
                                             }

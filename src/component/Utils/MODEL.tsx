@@ -133,6 +133,9 @@ export const CustomizerColor =
         {
             color: "linear-gradient(to right, #fe8dc6, #fed1c7)"
         },
+        {
+            color: "linear-gradient(to right, #fe8dc6, #fed1c7)"
+        },
     ]
 
 
