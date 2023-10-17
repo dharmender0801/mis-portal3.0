@@ -6,7 +6,7 @@ import Customizer from "../UI/Customizer";
 
 const AdminLayout = (props: any) => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [isLogged, setIsLogged] = useState(true);
     const [isLoaded, setIsLoaded] = useState(false);
     const loadUserInfo = () => {
@@ -29,7 +29,7 @@ const AdminLayout = (props: any) => {
     }
 
     useEffect(() => {
-        if (isLoaded == false) {
+        if (isLoaded === false) {
             loadUserInfo()
         }
     }, [isLogged])
