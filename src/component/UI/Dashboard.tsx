@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { MODEL } from "../Utils/MODEL";
 
 import { SiMicrosoftexcel } from 'react-icons/si';
-import { FaFilter } from 'react-icons/fa';
+// import { FaFilter } from 'react-icons/fa';
 import HttpReq from "../Service/HttpReq";
 import { API_ROUTES, BASE_URL } from "../Utils/Constant";
 import FileUtil from "../Utils/Excel";
 import Callback from "../Services/Callback";
 import UpdateVendor from "../Services/Update";
-import { toast, ToastContainer } from 'react-toastify';
+// import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Livecallback from "../Services/LiveCallback";
 import Mis, { MisRef } from "../Services/Mis";
@@ -22,18 +22,18 @@ import Suppress from "../Services/Suppress";
 const Dashboard = (props: any) => {
     const [operator, setOpeartor] = useState([MODEL.operatordata]);
     const [columns, setColumn] = useState([MODEL.columns]);
-    const [columndata, setColumnData] = useState([MODEL.columnData]);
+    // const [columndata, setColumnData] = useState([MODEL.columnData]);
     const [columndata1, setColumnData1] = useState([MODEL.columnData]);
     const [columndata2, setColumnData2] = useState([MODEL.columnData]);
     const [tobeShow, setTobeShow] = useState('');
-    const [vandor, setVendor] = useState([MODEL.vendoradd]);
+    // const [vandor, setVendor] = useState([MODEL.vendoradd]);
     const [vendorColumn, setVendorColumn] = useState([MODEL.columns])
     const [vandorMenus, setVendorMen] = useState([MODEL.vendomenu]);
     const [vendorComp, setComp] = useState('');
     const [vendName, setVendName] = useState('');
-    const [added, setAdded] = useState(false);
-    const [lpurl, setUrl] = useState('');
-    const [isButtonClicked, setIsButtonClicked] = useState(false)
+    // const [added, setAdded] = useState(false);
+    // const [lpurl, setUrl] = useState('');
+    // const [isButtonClicked, setIsButtonClicked] = useState(false)
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0];
     const [startDate, setStartdate] = useState(today.toISOString().slice(0, 10));
@@ -44,7 +44,7 @@ const Dashboard = (props: any) => {
     yesterday.setDate(yesterday.getDate() - 1);
     const [fromDate, setFromDate] = useState(fiveDaysAgo.toISOString().split('T')[0]);
     const [toDate, setToDate] = useState(yesterday.toISOString().split('T')[0]);
-    const [formData, setFormData] = useState(MODEL.vendor);
+    // const [formData, setFormData] = useState(MODEL.vendor);
 
     const childRef = useRef<MisRef>(null);
     useEffect(() => {
@@ -106,17 +106,17 @@ const Dashboard = (props: any) => {
     }
 
 
-    const closeDiv = () => {
-        setAdded(false);
-    }
+    // const closeDiv = () => {
+    //     setAdded(false);
+    // }
 
-    const handleChange = (event: any) => {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => ({
-            ...prevFormData,
-            [name]: value,
-        }));
-    }
+    // const handleChange = (event: any) => {
+    //     const { name, value } = event.target;
+    //     setFormData((prevFormData) => ({
+    //         ...prevFormData,
+    //         [name]: value,
+    //     }));
+    // }
 
 
 
@@ -125,37 +125,37 @@ const Dashboard = (props: any) => {
             childRef.current.childMethod();
         }
     }
-    const handleSubmit = () => {
-        HttpReq.PostReq(`${BASE_URL}/${props.service}/add/vendor`, formData).then((response) => {
-            if (response.data.code === 200) {
-                setUrl(response.data.lpUrl)
-                setAdded(true);
-                toast.success(response.data.statusCode, {
-                    position: 'top-right',
-                    autoClose: 5000, // Duration the notification should be shown (in milliseconds)
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-            } else {
-                toast.error('Failed to add vendor!', {
-                    position: 'top-right',
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                });
-            }
+    // const handleSubmit = () => {
+    //     HttpReq.PostReq(`${BASE_URL}/${props.service}/add/vendor`, formData).then((response) => {
+    //         if (response.data.code === 200) {
+    //             setUrl(response.data.lpUrl)
+    //             setAdded(true);
+    //             toast.success(response.data.statusCode, {
+    //                 position: 'top-right',
+    //                 autoClose: 5000, // Duration the notification should be shown (in milliseconds)
+    //                 hideProgressBar: false,
+    //                 closeOnClick: true,
+    //                 pauseOnHover: true,
+    //                 draggable: true,
+    //                 progress: undefined,
+    //             });
+    //         } else {
+    //             toast.error('Failed to add vendor!', {
+    //                 position: 'top-right',
+    //                 autoClose: 5000,
+    //                 hideProgressBar: false,
+    //                 closeOnClick: true,
+    //                 pauseOnHover: true,
+    //                 draggable: true,
+    //                 progress: undefined,
+    //             });
+    //         }
 
 
 
 
-        })
-    }
+    //     })
+    // }
 
 
     return (

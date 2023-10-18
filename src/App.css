@@ -318,6 +318,11 @@ nav input {
   width: 100%;
   overflow: scroll;
 }
+.table-container thead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 tbody tr:hover {
   background-color: blue;
   /* color: white; */
@@ -416,7 +421,7 @@ table {
   margin-bottom: 20px; /* You can adjust this value to add some space between the button and the bottom of the div */
 }
 
-.Dashboard .service-name{
+.Dashboard .service-name {
   display: flex;
   width: 95vw;
   text-align: start;
@@ -424,5 +429,19 @@ table {
 }
 .Dashboard .service-name h3:last-child {
   text-align: right;
+}
+.delete-warning{
+  position: absolute;
+  align-self: center;
+  display: flex;
+  width: 80vw;
+  bottom: 100px;
+  height:15vw;
+  background: red;
+  justify-content: center;
+  box-shadow: 0 0 4px rgba(14, 3, 3, 0.9);
+  align-items: center;
+  border-radius: 10px ;
+
 
 }

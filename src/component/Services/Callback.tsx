@@ -20,11 +20,14 @@ const Callback = (props: any) => {
         });
     }
 
-    const Check = (e: any) => {
+    const Delete = (e: any) => {
+        console.log(e);
+
+    }
+    const Edit = (e: any) => {
         console.log(e);
     }
-    const Copy =(e:any)=>
-    {
+    const Copy = (e: any) => {
         navigator.clipboard.writeText(e)
         toast.success("Copied", {
             position: 'top-right',
@@ -43,12 +46,12 @@ const Callback = (props: any) => {
             <table >
                 <div className="table">
                     <thead className="bg-primary">
-                        <tr style={{background:props.navColor}}>
+                        <tr style={{ background: props.navColor }}>
                             {
                                 columns.map((item) => {
                                     return (
                                         <>
-                                            <td style={{ padding: "10px 20px",width:"20vw",height:"2.5vw", textAlign: "center", }}>{item?.columnName}</td>
+                                            <td style={{ padding: "10px 20px", width: "20vw", height: "2.5vw", textAlign: "center", }}>{item?.columnName}</td>
                                         </>
                                     )
                                 }
@@ -109,12 +112,12 @@ const Callback = (props: any) => {
                                             textAlign: "center",
                                             width: "9%"
 
-                                        }}><button style={{cursor:"pointer",background:"red",color:"white",padding:".3em",outline:"",border:"none",borderRadius:"5px"}} onClick={() => Check(item)}>Delete</button>
-                                        
-                                        <button style={{marginLeft:"20px", cursor:"pointer",background:"green",color:"white",padding:".3em",outline:"",border:"none",borderRadius:"5px"}} onClick={() => Check(item)}>Edit</button>
-                                        
+                                        }}><button style={{ cursor: "pointer", background: "red", color: "white", padding: ".3em", outline: "", border: "none", borderRadius: "5px" }} onClick={() => Delete(item)}>Delete</button>
+
+                                            <button style={{ marginLeft: "20px", cursor: "pointer", background: "green", color: "white", padding: ".3em", outline: "", border: "none", borderRadius: "5px" }} onClick={() => Edit(item)}>Edit</button>
+
                                         </td>
-                                        
+
                                     </tr>
                                     </>
                                 )
@@ -124,6 +127,9 @@ const Callback = (props: any) => {
                     </tbody>
                 </div>
             </table>
+            {/* <div className="delete-warning">
+                This is check
+            </div> */}
         </div>
 
     )
